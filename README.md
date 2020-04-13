@@ -16,6 +16,9 @@
 - Web application
     - Interface for user
 - Hybrid Storage Server
+- API codes for fuseki-server access
+    - connect
+    - update, delete, replace ..
 
 
 ## Requirements
