@@ -28,8 +28,8 @@
 	  			</div>
 			</div>
 		</section>
-			
 		<section>
+			<img src="image/background.jpg" title="background image" style="width:100%; height:100%"></img>
 		</section>
 	</div>
 	<footer>
