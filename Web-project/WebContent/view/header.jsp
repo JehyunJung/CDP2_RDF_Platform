@@ -32,7 +32,7 @@
 	        <a class="nav-link" href="#">Query</a>
 	      </li>
 	    </ul>
-	    <button class="btn login_button" type="button" onclick="location.href='signinView.jsp'">Sign in</button>
+	    <button class="btn login_button" type="button" onclick="location.href='signInView.jsp'">Sign In</button>
 	    
 	  </div>
 	</nav>

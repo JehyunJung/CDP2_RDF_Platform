@@ -31,19 +31,19 @@
 	 <div class="page-wrapper">
 		<section class="container">
 			   <div class="jumbotron">
-				   <form method="post" action="../actions/loginAction.jsp">
+				   <form method="post" action="../actions/signInAction.jsp">
 				    <h3 style="text-align: center;padding-bottom:10px"> Sign In </h3>
 				    <div class="form-group">
-				     <input type="text" class="form-control" placeholder="Enter ID" name="user_Id" maxlength="20">
+				     <input type="text" class="form-control" placeholder="Enter ID" name="user_Id" required maxlength="20">
 				    </div>
 				    <div class="form-group">
-				     <input type="password" class="form-control" placeholder="Enter Password" name="user_Pw" maxlength="20">
+				     <input type="password" class="form-control" placeholder="Enter Password" required name="user_Pw" maxlength="20">
 				    </div>
 				    <input type="submit" class="btn btn-success form-control" value="Sign In" style="font:20px;">
 				   </form>
 				   <hr >
 				   <div>
-				   	<h4 style="text-align: center; margin-top:10px;">Or <a href="signupView.jsp" style="color:black"><strong>Sign Up</strong></a></h4>
+				   	<h4 style="text-align: center; margin-top:10px;">Or <a href="signUpView.jsp" style="color:black"><strong>Sign Up</strong></a></h4>
 				   </div>
 				  </div>
 		</section>
