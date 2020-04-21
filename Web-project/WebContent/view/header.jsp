@@ -23,10 +23,9 @@
 	          Manage Menu
 	        </a>
 	        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-	          <a class="dropdown-item" href="uploadView.jsp">Upload</a>
-	          <a class="dropdown-item" href="deleteView.jsp">Delete</a>
+	          <a class="dropdown-item" href="manageView.jsp">upload/delete</a>
 	          <div class="dropdown-divider"></div>
-	          <a class="dropdown-item" href="#">Something else here</a>
+	          <a class="dropdown-item" href="replaceView.jsp">replace</a>
 	        </div>
 	      
 	      <li class="nav-item">

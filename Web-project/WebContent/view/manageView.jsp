@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="jena.FileUpload"%>
+<%@ page import="java.io.File"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,6 +18,10 @@
 		.upload_form{
 			max_width:400px;
 		}
+		h3{
+			text-align: left;
+			padding-bottom:10px
+		}
 	</style>
 </head>
 <body>
@@ -27,18 +31,52 @@
 	<div class="page-wrapper">
 		<section>
 	   		<div class="jumbotron">
+	   		<h3>Upload DataFile</h3>
+	   			<div class="container">
 	   			<form action="../action/uploadAction.jsp" method="post" enctype="multipart/form-data">
-				    <h3 style="text-align: left;padding-bottom:10px">Upload DataFile</h3>
 				    <div class="form-group upload_form">
 				     <input type="file" id="fileinput" name="file"> <br/>
 				     <input type="submit" class="btn btn-success form-control" value="Upload" style="font:20px;">
 				    </div>
 	   			</form>
+	   			</div>
 			</div>
 		</section>
 		<section>
 	   		<div class="jumbotron">
-	   			<h2>Delete Data Files</h2>
+	   			<h3>Delete Data Files</h3>
+	   			<div class="container">
+					<div class="row">
+						<table class="table table-striped" id="fileList"
+							style="text-align: center; border: 1px solid #dddddd">
+							<thead>
+								<tr>
+									<th style="background-color: #eeeeee; text-align: center;">File Name</th>
+									<th style="background-color: #eeeeee; text-align: center;">Delete</th>
+								</tr>
+							</thead>
+							<tbody>
+								<%
+					   				String directory=application.getRealPath("/upload/");
+					   				String files[]= new File(directory).list();
+					   				if(files.length==0){
+					   					%>
+					   					<td colspan=2>No Files Currently</td>
+									<%
+					   				}
+					   				for(String file: files){
+					   			%>
+								<tr>
+									<td><%=file%></td>
+									<td><a href="../action/deleteAction.jsp?filename=<%=file %>">Delete</a></td>
+								</tr>
+								<%
+									}
+								%>
+							</tbody>
+						</table>
+					</div>
+				</div>
 			</div>
 		</section>
 	</div>
@@ -54,6 +92,7 @@
 			buttonName:'btn-success',
 			buttonText:'Choose File'
 		})
+
 	</script>
 </body>
 </html>

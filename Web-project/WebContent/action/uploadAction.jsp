@@ -20,11 +20,10 @@
 		
 		String fileName=multipartRequest.getOriginalFileName("file"); //업로드되 파일 이름
 		String realName=multipartRequest.getFilesystemName("file"); //서버에 저장되는 실제 이름
-		
-		out.write("파일 이름:" + fileName +"<br />");
-		out.write("실제 파일 이름:" + realName +"<br />");
-	
 	%>
+	<script>
+		location.href="../view/manageView.jsp";
+	</script>
 
 </body>
 </html>

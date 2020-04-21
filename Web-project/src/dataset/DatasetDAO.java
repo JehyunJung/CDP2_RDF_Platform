@@ -14,7 +14,7 @@ public class DatasetDAO {
 	}
 	*/
 	/*
-	public get () {
+	public delete () {
 		
 	}
 	*/
