@@ -1,7 +1,8 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="EUC-KR">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>RDF Hybrid Storage System</title>
@@ -31,7 +32,7 @@
 	 <div class="page-wrapper">
 		<section class="container">
 			   <div class="jumbotron">
-				   <form method="post" action="../actions/signInAction.jsp">
+				   <form method="post" action="../action/signInAction.jsp">
 				    <h3 style="text-align: center;padding-bottom:10px"> Sign In </h3>
 				    <div class="form-group">
 				     <input type="text" class="form-control" placeholder="Enter ID" name="user_Id" required maxlength="20">
