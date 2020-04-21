@@ -11,7 +11,7 @@
 </head>
 <body>
 	<%
-		String directory=application.getRealPath("/upload/");
+		String directory=application.getRealPath("/DataFiles/");
 		String fileName=request.getParameter("filename");
 		String filePath=directory+fileName;
 		boolean status=FileManage.deleteFile(filePath);

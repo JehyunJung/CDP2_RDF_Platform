@@ -75,7 +75,7 @@
 							</thead>
 							<tbody>
 								<%
-					   				String directory=application.getRealPath("/upload/");
+					   				String directory=application.getRealPath("/DataFiles/");
 					   				String files[]= new File(directory).list();
 					   				if(files.length==0){
 					   					%>
