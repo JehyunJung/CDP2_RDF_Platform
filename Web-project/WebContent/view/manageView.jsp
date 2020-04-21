@@ -22,6 +22,22 @@
 			text-align: left;
 			padding-bottom:10px
 		}
+		.link_item{
+
+			padding:2px 10px;
+			border-radius:3px;
+		}
+		.link_item:hover{
+			color:black;
+		}
+		.delete_btn{
+			color:white;
+			background:red;
+		}
+		.add_btn{
+			color:white;
+			background:green;
+		}
 	</style>
 </head>
 <body>
@@ -35,7 +51,7 @@
 	   			<div class="container">
 	   			<form action="../action/uploadAction.jsp" method="post" enctype="multipart/form-data">
 				    <div class="form-group upload_form">
-				     <input type="file" id="fileinput" name="file"> <br/>
+				     <input type="file" id="fileinput" name="file" required> <br/>
 				     <input type="submit" class="btn btn-success form-control" value="Upload" style="font:20px;">
 				    </div>
 	   			</form>
@@ -44,7 +60,7 @@
 		</section>
 		<section>
 	   		<div class="jumbotron">
-	   			<h3>Delete Data Files</h3>
+	   			<h3>Manage Data Files</h3>
 	   			<div class="container">
 					<div class="row">
 						<table class="table table-striped" id="fileList"
@@ -52,7 +68,9 @@
 							<thead>
 								<tr>
 									<th style="background-color: #eeeeee; text-align: center;">File Name</th>
-									<th style="background-color: #eeeeee; text-align: center;">Delete</th>
+									<th style="background-color: #eeeeee; text-align: center;"></th>
+									<th style="background-color: #eeeeee; text-align: center;"></th>
+									<th colspan=3 style="background-color: #eeeeee; text-align: center;">Actions</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -61,14 +79,17 @@
 					   				String files[]= new File(directory).list();
 					   				if(files.length==0){
 					   					%>
-					   					<td colspan=2>No Files Currently</td>
+					   					<td colspan=5>No Files Currently</td>
 									<%
 					   				}
 					   				for(String file: files){
 					   			%>
 								<tr>
 									<td><%=file%></td>
-									<td><a href="../action/deleteAction.jsp?filename=<%=file %>">Delete</a></td>
+									<td></td>
+									<td></td>
+									<td style="padding-left:30px;"><a class="link_item delete_btn" href="../action/deleteAction.jsp?filename=<%=file %>">Delete</a></td>
+									<td><a class="link_item add_btn" href="../action/deleteAction.jsp?filename=<%=file %>">Add to Dataset</a></td>
 								</tr>
 								<%
 									}

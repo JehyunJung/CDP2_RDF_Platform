@@ -14,9 +14,18 @@
 		String directory=application.getRealPath("/upload/");
 		String fileName=request.getParameter("filename");
 		String filePath=directory+fileName;
-		System.out.println(fileName);
-		FileManage.deleteFile(filePath);
+		boolean status=FileManage.deleteFile(filePath);
 		
+		if(status){
+			out.write("<script>");
+			out.println("alert('"+fileName+" 파일이 제거되었습니다.')");
+			out.write("</script>");
+		}
+		else{
+			out.write("<script>");
+			out.println("alert('"+fileName+" 파일이 제거 되지 않았습니다.')");
+			out.write("</script>");
+		}
 	%>
 	<script>
 		location.href="../view/manageView.jsp";
