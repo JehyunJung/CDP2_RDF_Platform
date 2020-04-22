@@ -11,6 +11,7 @@
 	<style>
 		html,body{
 			height:100%;
+			min-width:500px;
 		}
 		.page-wrapper{
 			min-height:100%;
@@ -18,8 +19,8 @@
 		.upload_form{
 			max_width:400px;
 		}
-		h3{
-			text-align: left;
+		h2,h3{
+			text-align: center;
 			padding-bottom:10px
 		}
 		.link_item{
@@ -47,8 +48,9 @@
 	<div class="page-wrapper">
 		<section>
 	   		<div class="jumbotron">
-	   		<h3>Upload DataFile</h3>
+			   
 	   			<div class="container">
+				<h2>Manage DataFiles</h2>
 	   			<form action="../action/uploadAction.jsp" method="post" enctype="multipart/form-data">
 				    <div class="form-group upload_form">
 				     <input type="file" id="fileinput" name="file" required> <br/>
@@ -56,12 +58,9 @@
 				    </div>
 	   			</form>
 	   			</div>
-			</div>
-		</section>
-		<section>
-	   		<div class="jumbotron">
-	   			<h3>Manage Data Files</h3>
+	   			
 	   			<div class="container">
+				   <h3>Current Data Files</h3>
 					<div class="row">
 						<table class="table table-striped" id="fileList"
 							style="text-align: center; border: 1px solid #dddddd">
@@ -89,7 +88,7 @@
 									<td></td>
 									<td></td>
 									<td style="padding-left:30px;"><a class="link_item delete_btn" href="../action/deleteAction.jsp?filename=<%=file %>">Delete</a></td>
-									<td><a class="link_item add_btn" href="../action/deleteAction.jsp?filename=<%=file %>">Add to Dataset</a></td>
+									<td><a class="link_item add_btn" href="#">Add to Dataset</a></td>
 								</tr>
 								<%
 									}

@@ -12,6 +12,7 @@
 			height:100%;
 			background:url("../image/login_background.jpg");
 			background-position:center;
+			min-width:500px;
 		}
 		.page-wrapper{
 			min-height:100%;

@@ -10,9 +10,13 @@
 	<style>
 		html,body{
 			height:100%;
+			min-width:500px;
 		}
 		.page-wrapper{
 			min-height:100%;
+		}
+		.jumbotron{
+			padding-left:20px;
 		}
 	</style>
 </head>
@@ -21,13 +25,11 @@
 		<jsp:include page="header.jsp" flush="false"/>
 	</header>
 	<div class="page-wrapper">
-		<section class="container">
+		<section>
 			<div class="jumbotron jumbotron-fluid">
-	  			<div class="container">
 	    			<h1>Welcome To RDF_HSS</h1>
 	    			<p>Hybrid Storage System for RDF Data</p>
 	  			</div>
-			</div>
 		</section>
 		<section>
 			<img src="../image/background.jpg" title="background image" style="width:100%; height:100%"></img>

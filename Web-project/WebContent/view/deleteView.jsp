@@ -9,6 +9,7 @@
 	<style>
 		html,body{
 			height:100%;
+			min-width:500px;
 		}
 		.page-wrapper{
 			min-height:100%;
