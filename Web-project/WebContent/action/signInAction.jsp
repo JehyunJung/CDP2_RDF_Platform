@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="Account.AccountDAO" %>
+<%@ page import="account.AccountDAO" %>
 <%@ page import="utils.DatabaseConnection" %>
 <%@ page import="java.io.PrintWriter" %>
-<jsp:useBean id="account" class="Account.Account" scope="page"/>
+<jsp:useBean id="account" class="account.AccountDTO" scope="page"/>
 <jsp:setProperty name="account" property="ID"/>
 <jsp:setProperty name="account" property="PASSWORD"/>
 <jsp:setProperty name="account" property="ADMIN_FLAG"/>

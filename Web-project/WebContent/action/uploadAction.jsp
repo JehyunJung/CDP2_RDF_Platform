@@ -1,6 +1,6 @@
 <%@ page import="dataset.DatasetDAO" %>
-<%@ page import="jena.FileUpload" %>
 <%@ page import="jena.StorageType" %>
+<%@ page import="file.FileManage" %>
 <%@ page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy" %>
 <%@ page import="com.oreilly.servlet.MultipartRequest" %>
 <%@ page import="java.io.PrintWriter"%>

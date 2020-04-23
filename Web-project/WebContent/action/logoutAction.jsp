@@ -2,8 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ page import="java.io.PrintWriter" %>
 <%@ page import="utils.DatabaseConnection" %>
-<%@ page import="Account.AccountDAO" %>
-<jsp:useBean id="account" class="Account.Account" scope="page"/>
+<%@ page import="account.AccountDAO" %>
+<jsp:useBean id="account" class="account.AccountDTO" scope="page"/>
 <jsp:setProperty name="account" property="ID"/>
 <jsp:setProperty name="account" property="PASSWORD"/>
 <jsp:setProperty name="account" property="NAME"/>
