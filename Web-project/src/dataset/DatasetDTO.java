@@ -1,36 +1,38 @@
 package dataset;
 
+import jena.StorageType;
+
 public class DatasetDTO {
-	String serial_num;
-	String contents;
+	int serial_Num;
+	String Title;
 	String data_type;
-	String registrant;
+	String manager;
 	String modification_time;
 	String storage_path;
 	
 	
-	public DatasetDTO(String serial_num, String contents, String data_type, String registrant, String modification_time,
+	public DatasetDTO(int serial_Num, String title, String data_type, String manager, String modification_time,
 			String storage_path) {
 		super();
-		this.serial_num = serial_num;
-		this.contents = contents;
+		this.serial_Num = serial_Num;
+		this.Title = title;
 		this.data_type = data_type;
-		this.registrant = registrant;
+		this.manager = manager;
 		this.modification_time = modification_time;
 		this.storage_path = storage_path;
 	}
 	
-	public String getSerial_num() {
-		return serial_num;
+	public int getSerial_num() {
+		return serial_Num;
 	}
-	public void setSerial_num(String serial_num) {
-		this.serial_num = serial_num;
+	public void setSerial_num(int serial_Num) {
+		this.serial_Num = serial_Num;
 	}
-	public String getContents() {
-		return contents;
+	public String getTitle() {
+		return Title;
 	}
-	public void setContents(String contents) {
-		this.contents = contents;
+	public void setTitle(String title) {
+		this.Title = title;
 	}
 	public String getData_type() {
 		return data_type;
@@ -38,11 +40,11 @@ public class DatasetDTO {
 	public void setData_type(String data_type) {
 		this.data_type = data_type;
 	}
-	public String getRegistrant() {
-		return registrant;
+	public String getManager() {
+		return manager;
 	}
-	public void setRegistrant(String registrant) {
-		this.registrant = registrant;
+	public void setManager(String manager) {
+		this.manager = manager;
 	}
 	public String getModification_time() {
 		return modification_time;

@@ -34,6 +34,26 @@
 	    </ul>
 	    <button class="btn login_button" type="button" onclick="location.href='signInView.jsp'">Sign In</button>
 	    
+	<%-- 로그아웃  
+		<%
+			String userID = null;
+			if(session.getAttribute("ID")!=null){
+				userID=(String)session.getAttribute("ID");
+			}
+		%>
+		<%
+			if(userID == null){
+		%>
+			<button class="btn login_button" type="button" onclick="location.href='signInView.jsp'">Sign In</button>
+	
+		<%
+			}else{
+		%>	
+	  		<button class="btn login_button" type="button" onclick="location.href='../action/logoutAction.jsp'">Sign Out</button>
+  		<%
+			}
+		%> --%>
+	    
 	  </div>
 	</nav>
 </body>

@@ -25,7 +25,7 @@ public class JenaAPI {
 		Model model = ModelFactory.createDefaultModel();
 		
 		// read the RDF/XML file
-		// `RDFDataMgr ?œload*?? operations create an in-memory container (model, or dataset as appropriate); ?œread?? operations add data into an existing model or dataset.
+		// `RDFDataMgr ?ï¿½load*?? operations create an in-memory container (model, or dataset as appropriate); ?ï¿½read?? operations add data into an existing model or dataset.
 		RDFDataMgr.read(model, inputFileName, Lang.RDFXML);
 		
 		// return model

@@ -36,10 +36,10 @@
 				   <form method="post" action="../action/signInAction.jsp">
 				    <h3 style="text-align: center;padding-bottom:10px"> Sign In </h3>
 				    <div class="form-group">
-				     <input type="text" class="form-control" placeholder="Enter ID" name="user_Id" required maxlength="20">
+				     <input type="text" class="form-control" placeholder="Enter ID" name="ID" required maxlength="20">
 				    </div>
 				    <div class="form-group">
-				     <input type="password" class="form-control" placeholder="Enter Password" required name="user_Pw" maxlength="20">
+				     <input type="password" class="form-control" placeholder="Enter Password" required name="PASSWORD" maxlength="20">
 				    </div>
 				    <input type="submit" class="btn btn-success form-control" value="Sign In" style="font:20px;">
 				   </form>
