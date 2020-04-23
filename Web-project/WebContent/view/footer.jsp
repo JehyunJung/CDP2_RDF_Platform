@@ -1,13 +1,16 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
-	<title>Insert title here</title>
 	<style>
 		footer{
 			background:#343a40;
 			color:white;
 			padding:20px;
+		}
+		.quicklink{
+			color:white;
 		}
 	</style>
 </head>
@@ -21,10 +24,9 @@
 			</div>
 			<div class="col-sm-4">Quick Link
 				<ul>
-					<li><a href="#">a</a></li>
-					<li><a href="#">b</a></li>
-					<li><a href="#">c</a></li>
-					<li><a href="#">d</a></li>
+					<li><a href="#" class="quicklink">upload</a></li>
+					<li><a href="#" class="quicklink">delete</a></li>
+					<li><a href="#" class="quicklink">replace</a></li>
 				</ul>
 			</div>
 			<div class="col-sm-4">
