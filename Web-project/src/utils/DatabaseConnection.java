@@ -10,13 +10,14 @@ public class DatabaseConnection {
 	static String port="";
 	static String userID="";
 	static String userPW="";
+	static String dbName="";
 
-	public static Connection get_DatabaseConnection(String db_name) {
+	public static Connection get_DatabaseConnection() {
 		Connection conn = null;
 		// Driver Loading
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			String db = url + ip + ":" + port + "/" + db_name+ "?serverTimezone=UTC";
+			String db = url + ip + ":" + port + "/" + dbName+ "?serverTimezone=UTC";
 			conn = DriverManager.getConnection(db, userID, userPW);
 			return conn;
 		}
@@ -25,6 +26,12 @@ public class DatabaseConnection {
 			e.printStackTrace();
 			return null;
 		} 
+	}
+	public static String getIP() {
+		return ip;
+	}
+	public static String getPort() {
+		return port;
 	}
 
 }

@@ -17,13 +17,13 @@
 		boolean status=FileManage.deleteFile(filePath);
 		
 		if(status){
+			DatasetDAO dataDAO = new DatasetDAO();
+			dataDAO.delete(fileName);
 			out.write("<script>");
 			out.println("alert('"+fileName+" 파일이 제거되었습니다.')");
 			out.write("</script>");
 		}
 		else{
-			DatasetDAO dataDAO = new DatasetDAO();
-			dataDAO.delete(fileName);
 			out.write("<script>");
 			out.println("alert('"+fileName+" 파일이 제거 되지 않았습니다.')");
 			out.write("</script>");

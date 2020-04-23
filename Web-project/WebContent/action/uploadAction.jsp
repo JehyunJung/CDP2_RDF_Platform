@@ -1,5 +1,4 @@
 <%@ page import="dataset.DatasetDAO" %>
-<%@ page import="jena.StorageType" %>
 <%@ page import="file.FileManage" %>
 <%@ page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy" %>
 <%@ page import="com.oreilly.servlet.MultipartRequest" %>
@@ -60,20 +59,16 @@
 			out.write("</script>");
 		}
 		else{
+			//파일이름.확장자에서 확장자만 뽑아서 저장
+			String data_type=realName.substring(realName.lastIndexOf(".")+1);
+			String storage_path=directory+realName;
+			DatasetDAO dataset=new DatasetDAO();
+			dataset.upload(realName,data_type,"...",storage_path);
 			out.write("<script>");
 			out.write("alert('"+fileName+" 파일을 성공적으로 저장하였습니다.')");
 			out.write("</script>");
 		}
-		
-		//파일이름.확장자에서 확장자만 뽑아서 저장
-		String data_type=realName.substring(realName.lastIndexOf(".")+1);
-		
-		//저장경로. 타입 만들어서 다시 수행.
-		//String storage_path= multipartRequest.getParameter("path");
-		
-		//new DatasetDAO().upload(realName, data_type, registrant, storage_path);
-		
-		
+
 	%>
 	<script>
 		location.href="../view/manageView.jsp";

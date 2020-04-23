@@ -1,7 +1,5 @@
 package dataset;
 
-import jena.StorageType;
-
 public class DatasetDTO {
 	int serial_Num;
 	String Title;
@@ -9,10 +7,11 @@ public class DatasetDTO {
 	String manager;
 	String modification_time;
 	String storage_path;
-	
+	String url;
+	String dataset;
 	
 	public DatasetDTO(int serial_Num, String title, String data_type, String manager, String modification_time,
-			String storage_path) {
+			String storage_path,String url,String dataset) {
 		super();
 		this.serial_Num = serial_Num;
 		this.Title = title;
@@ -20,8 +19,11 @@ public class DatasetDTO {
 		this.manager = manager;
 		this.modification_time = modification_time;
 		this.storage_path = storage_path;
+		this.url=url;
+		this.dataset=dataset;
 	}
 	
+
 	public int getSerial_num() {
 		return serial_Num;
 	}
@@ -58,5 +60,21 @@ public class DatasetDTO {
 	public void setStorage_path(String storage_path) {
 		this.storage_path = storage_path;
 	}
+	public String getURL() {
+		return url;
+	}
+
+	public void setURL(String uRL) {
+		url = uRL;
+	}
+
+	public String getDataset() {
+		return dataset;
+	}
+
+	public void setDataset(String dataset) {
+		this.dataset = dataset;
+	}
+
 	
 }

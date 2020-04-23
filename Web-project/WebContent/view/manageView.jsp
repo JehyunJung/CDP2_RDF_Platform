@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="java.io.File"%>
+<%@ page import="dataset.DatasetDAO"%>
+<%@ page import="dataset.DatasetDTO"%>
+<%@ page import="java.util.ArrayList" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -70,29 +74,44 @@
 									<th style="background-color: #eeeeee; text-align: center;"></th>
 									<th style="background-color: #eeeeee; text-align: center;"></th>
 									<th colspan=3 style="background-color: #eeeeee; text-align: center;">Actions</th>
+									<th style="background-color: #eeeeee; text-align: center;">Location</th>
 								</tr>
 							</thead>
 							<tbody>
 								<%
-					   				String directory=application.getRealPath("/DataFiles/");
-					   				String files[]= new File(directory).list();
-					   				if(files.length==0){
-					   					%>
-					   					<td colspan=5>No Files Currently</td>
-									<%
+									DatasetDAO datasetDAO=new DatasetDAO();
+									ArrayList<DatasetDTO> datas=datasetDAO.getDataList();
+					   				if(datas.isEmpty()){
+					   					out.write("<td colspan=7>No Files Currently</td>");
 					   				}
-					   				for(String file: files){
+					   				for(DatasetDTO data: datas){
 					   			%>
 								<tr>
-									<td><%=file%></td>
+									<td><%=data.getTitle()%></td>
 									<td></td>
 									<td></td>
-									<td style="padding-left:30px;"><a class="link_item delete_btn" href="../action/deleteAction.jsp?filename=<%=file %>">Delete</a></td>
-									<td><a class="link_item add_btn" href="#">Add to Dataset</a></td>
+									<%
+										if(data.getDataset()==null){
+											%>
+											<td style="padding-left:30px;"><a class="link_item delete_btn" href="../action/deleteAction.jsp?filename=<%=data.getTitle()%>">Delete</a></td>
+											<td><a class="link_item add_btn" href="../action/addtoDatasetAction.jsp?filename=<%=data.getTitle()%>&dataset=M">Add to Memory</a></td>
+											<td><a class="link_item add_btn" href="../action/addtoDatasetAction.jsp?filename=<%=data.getTitle()%>&dataset=D">Add to Disk</a></td>
+											<td>Not Added Yet</td>
+									<%
+										}
+										else{
+											%>
+											<td colspan=3 style="padding-left:30px;"><a class="link_item delete_btn" href="../action/deleteAction.jsp?filename=<%=data.getTitle()%>">Delete</a></td>
+											<%
+											if(data.getDataset().contentEquals("M"))
+													out.write("<td><strong>In-Memory</strong></td>");
+											else
+												out.write("<td><strong>Disk</strong></td>");
+										}
+									%>									
 								</tr>
 								<%
-									}
-								%>
+								} %>
 							</tbody>
 						</table>
 					</div>

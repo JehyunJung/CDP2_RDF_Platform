@@ -61,9 +61,9 @@
 			script.println("</script>");
 		}
 		AccountDAO accountDAO = new AccountDAO();
-		int result = accountDAO.join(account);
+		boolean result = accountDAO.join(account);
 		
-		if(result == -1){	
+		if(!result){	
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
 			script.println("alert('중복된 아이디입니다.')");

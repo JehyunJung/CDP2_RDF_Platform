@@ -16,7 +16,7 @@ public class AccountDAO {
 	
 	public AccountDAO() {
 		try {
-			conn = DatabaseConnection.get_DatabaseConnection("CDP2");
+			conn = DatabaseConnection.get_DatabaseConnection();
 		}catch (Exception e){
 			e.printStackTrace();
 		}
@@ -40,23 +40,24 @@ public class AccountDAO {
 		} catch(Exception e){
 			e.printStackTrace();
 		}
-		return -2; // DB ?˜¤ë¥?
+		return -2;
 	}
 	
-	public int join(AccountDTO account) {
+	public boolean join(AccountDTO account) {
 		String SQL = "INSERT INTO ACCOUNT VALUES(?,?,?,0)";
 		try{
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setString(1, account.getID());
 			pstmt.setString(2, account.getPASSWORD());
 			pstmt.setString(3, account.getNAME());
-			return pstmt.executeUpdate();
+			pstmt.executeUpdate();
+			return true;
 		}
 		catch(Exception e)
 		{
 			e.printStackTrace();
 		}
-		return -1;
+		return false;
 	}
 
 }
