@@ -88,11 +88,7 @@
 									<td></td>
 									<td></td>
 									<td style="padding-left:30px;"><a class="link_item delete_btn" href="../action/deleteAction.jsp?filename=<%=file %>">Delete</a></td>
-<<<<<<< HEAD
 									<td><a class="link_item add_btn" href="#">Add to Dataset</a></td>
-=======
-									<td><a class="link_item add_btn" href="../action/deleteAction.jsp?filename=<%=file %>">Add to Dataset</a></td>
->>>>>>> webapp-1
 								</tr>
 								<%
 									}
@@ -116,10 +112,6 @@
 			buttonName:'btn-success',
 			buttonText:'Choose File'
 		})
-<<<<<<< HEAD
-
-=======
->>>>>>> webapp-1
 	</script>
 </body>
 </html>
