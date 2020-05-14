@@ -5,23 +5,33 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 </head>
 <body>
 	<%
 		String filename=request.getParameter("filename");
-		String dataset=request.getParameter("dataset");
+		String datasetType=request.getParameter("datasetType");
 		
 		String directory=application.getRealPath("/DataFiles/");
 		String filePath=directory+filename;
-		
-		boolean status1=JenaAPI.addtoDataset(filePath, dataset);
+		String datasetName=filename.replaceAll("(\\.\\w+)", "");
+
+		boolean status1=JenaAPI.addtoDataset(filePath, datasetName);
 		
 		DatasetDAO datasetDAO=new DatasetDAO();
-		boolean status2=datasetDAO.addToDataset(filename,dataset);
+		boolean status2=datasetDAO.addToDataset(filename,datasetType);
+		
+		out.write("<script>");
+		out.println("alert('status1: " + status1 + "')");
+		out.write("</script>");
+		
+		out.write("<script>");
+		out.println("alert('status2: " + status2 + "')");
+		out.write("</script>");
 		
 		if(status1 && status2){
 			out.write("<script>");
-			if(dataset.contentEquals("M"))
+			if(datasetType.contentEquals("mem"))
 				out.println("alert('파일이 정상적으로  메모리에 추가되었습니다.')");
 			else
 				out.println("alert('파일이 정상적으로  디스크에 추가되었습니다.')");
@@ -36,6 +46,6 @@
 	<script>
 		location.href="../view/manageView.jsp";
 	</script>
-
+	
 </body>
 </html>

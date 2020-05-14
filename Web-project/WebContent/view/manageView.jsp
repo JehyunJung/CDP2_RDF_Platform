@@ -85,6 +85,8 @@
 					   					out.write("<td colspan=7>No Files Currently</td>");
 					   				}
 					   				for(DatasetDTO data: datas){
+					   					String fileName=data.getTitle();
+					   					String datasetName=fileName.replaceAll("(\\.\\w+)", "");
 					   			%>
 								<tr>
 									<td><%=data.getTitle()%></td>
@@ -93,15 +95,15 @@
 									<%
 										if(data.getDataset()==null){
 											%>
-											<td style="padding-left:30px;"><a class="link_item delete_btn" href="../action/deleteAction.jsp?filename=<%=data.getTitle()%>">Delete</a></td>
-											<td><a class="link_item add_btn" href="../action/addtoDatasetAction.jsp?filename=<%=data.getTitle()%>&dataset=M">Add to Memory</a></td>
-											<td><a class="link_item add_btn" href="../action/addtoDatasetAction.jsp?filename=<%=data.getTitle()%>&dataset=D">Add to Disk</a></td>
+											<td style="padding-left:30px;"><a class="link_item delete_btn" href="../action/deleteAction.jsp?filename=<%=fileName%>">Delete</a></td>
+											<td><a class="link_item add_btn" href="../action/addtoDatasetAction.jsp?filename=<%=fileName%>&datasetType=mem" datasetExists="False" datasetName=<%=datasetName%> datasetType=mem>Add to Memory</a></td>
+											<td><a class="link_item add_btn" href="../action/addtoDatasetAction.jsp?filename=<%=fileName%>&datasetType=tdb" datasetExists="False" datasetName=<%=datasetName%> datasetType=mem>Add to Disk</a></td>
 											<td>Not Added Yet</td>
 									<%
 										}
 										else{
 											%>
-											<td colspan=3 style="padding-left:30px;"><a class="link_item delete_btn" href="../action/deleteAction.jsp?filename=<%=data.getTitle()%>">Delete</a></td>
+											<td colspan=3 style="padding-left:30px;"><a class="link_item delete_btn" href="../action/deleteAction.jsp?filename=<%=fileName%>">Delete</a></td>
 											<%
 											if(data.getDataset().contentEquals("M"))
 													out.write("<td><strong>In-Memory</strong></td>");
@@ -126,6 +128,8 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-filestyle/2.1.0/bootstrap-filestyle.min.js"></script>
 	<script src="../js/bootstrap.min.js"></script>
+	
+	<script src="../js/manageDataset.js"></script>
 	<script>
 		$('#fileinput').filestyle({
 			buttonName:'btn-success',
