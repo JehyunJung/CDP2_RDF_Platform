@@ -118,13 +118,17 @@ public class DatasetDAO {
 	}
 	public boolean deleteDataset(String datasetName) {
 		String ip=DatabaseConnection.getIP();
-		String request ="http://"+ip+"/$/datasets/"+datasetName;
+		String request ="http://"+ip+":3030/$/datasets/"+datasetName;
 		URL url;
 		HttpURLConnection connection;
 		try {
 			url = new URL(request);
 			connection= (HttpURLConnection) url.openConnection(); 
 			connection.setRequestMethod("DELETE"); 
+			connection.setDoInput(true);
+			connection.setInstanceFollowRedirects(false); 
+			connection.setUseCaches (false);
+			connection.setDoOutput(true);
 			int responseStatus=connection.getResponseCode();
 			connection.disconnect();
 			if(responseStatus==200) 
@@ -141,6 +145,7 @@ public class DatasetDAO {
 		String ip=DatabaseConnection.getIP();
 		String port=DatabaseConnection.getPort();
 		String SQL="UPDATE DATA SET URL= ?, DATASET=? WHERE Title = ?";
+		
 		boolean status;
 		if(datasetExists) {
 			status=deleteDataset(datasetName);
@@ -148,15 +153,20 @@ public class DatasetDAO {
 		}
 		status=createDataset(datasetName,datasetType);
 		System.out.println("Performed Create: "+status);
+		
 		if(!status)
 			return status;
+		System.out.println("Data filename: "+Title);
+		System.out.println(datasetType);
+		if(datasetType.contentEquals("mem"))
+			datasetType="M";
+		else
+			datasetType="D";
+			
 		  try {
 	         pstmt=conn.prepareStatement(SQL);
-	         if(dataset.contentEquals("M"))
-	            pstmt.setString(1,"http://"+ip+":3030/"+datasetName+"/sparql");
-	         else
-	            pstmt.setString(1,"http://"+ip+":3030/"+datasetName+"/sparql");         
-	         pstmt.setString(2, dataset);
+	         pstmt.setString(1,"http://"+ip+":3030/"+datasetName+"/sparql");         
+	         pstmt.setString(2, datasetType);
 	         pstmt.setString(3, Title);
 	         pstmt.executeUpdate();
 	         return true;

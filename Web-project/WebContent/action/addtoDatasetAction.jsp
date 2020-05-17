@@ -17,7 +17,7 @@
 		String filePath=directory+filename;
 		String datasetName=filename.replaceAll("(\\.\\w+)", "");
 		DatasetDAO datasetDAO=new DatasetDAO();
-		boolean status1=datasetDAO.addtoDataset(filePath, datasetName,datasetType,datasetExists);	
+		boolean status1=datasetDAO.addtoDataset(filename, datasetName,datasetType,datasetExists);	
 		
 		boolean status2=JenaAPI.addData(filePath,datasetName);
 		
