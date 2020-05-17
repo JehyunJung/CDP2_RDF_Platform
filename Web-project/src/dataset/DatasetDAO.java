@@ -20,7 +20,7 @@ public class DatasetDAO {
 	
 	
 	public DatasetDAO() {
-		conn=DatabaseConnection.get_DatabaseConnection();
+		conn=DatabaseConnection.getDatabaseConnection();
 	}
 	
 	public String getDate() {
@@ -70,17 +70,17 @@ public class DatasetDAO {
 		return -1;
 	}
 	
-	public boolean upload(String Title, String data_type, String manager, String storage_path) {
+	public boolean upload(String Title, String dataType, String manager, String storagePath) {
 		String SQL="INSERT INTO DATA VALUES (?, ?, ?, ?, ?, ?, NULL,NULL)";
 		try {
 			PreparedStatement pstmt=conn.prepareStatement(SQL);
 			
 			pstmt.setInt(1, getNext());
 			pstmt.setString(2, Title);
-			pstmt.setString(3, data_type);
+			pstmt.setString(3, dataType);
 			pstmt.setString(4, manager);
 			pstmt.setString(5, getDate());
-			pstmt.setString(6, storage_path);
+			pstmt.setString(6, storagePath);
 			
 			pstmt.executeUpdate();
 			return true;
@@ -176,8 +176,10 @@ public class DatasetDAO {
 	      return false;
 	}
 		
-	public int delete (String Title) {
+	public int delete (String Title,String datasetName,boolean datasetExists) {
 		String SQL = "DELETE FROM DATA WHERE Title = ?";
+		if(datasetExists)
+			deleteDataset(datasetName);
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(SQL);   
 			pstmt.setString(1, Title);

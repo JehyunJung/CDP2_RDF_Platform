@@ -16,7 +16,7 @@ public class AccountDAO {
 	
 	public AccountDAO() {
 		try {
-			conn = DatabaseConnection.get_DatabaseConnection();
+			conn = DatabaseConnection.getDatabaseConnection();
 		}catch (Exception e){
 			e.printStackTrace();
 		}

@@ -97,20 +97,20 @@
 											%>
 											<td style="padding-left:30px;"><a class="link_item add_btn" href="../action/addtoDatasetAction.jsp?filename=<%=fileName%>&datasetType=mem&datasetExists=False">Add to Memory</a></td>
 											<td><a class="link_item add_btn" href="../action/addtoDatasetAction.jsp?filename=<%=fileName%>&datasetType=tdb&datasetExists=False">Add to Disk</a></td>
-											<td ><a class="link_item delete_btn" href="../action/deleteAction.jsp?filename=<%=fileName%>">Delete</a></td>
+											<td ><a class="link_item delete_btn" href="../action/deleteAction.jsp?filename=<%=fileName%>&datasetExists=False">Delete</a></td>
 											<td>Not in Dataset</td>
 									<%
 										}
 										else if(data.getDataset().contentEquals("M")){
 											%>
 											<td colspan=2 style="padding-left:30px;"><a class="link_item add_btn" href="../action/addtoDatasetAction.jsp?filename=<%=fileName%>&datasetType=tdb&datasetExists=True">Add to Disk</a></td>
-											<td><a class="link_item delete_btn" href="../action/deleteAction.jsp?filename=<%=fileName%>">Delete</a></td>
+											<td><a class="link_item delete_btn" href="../action/deleteAction.jsp?filename=<%=fileName%>&datasetExists=True">Delete</a></td>
 											<%
 										}
 										else{
 											%>
 											<td colspan=2 style="padding-left:30px;"><a class="link_item add_btn" href="../action/addtoDatasetAction.jsp?filename=<%=fileName%>&datasetType=mem&datasetExists=True">Add to Memory</a></td>
-											<td><a class="link_item delete_btn" href="../action/deleteAction.jsp?filename=<%=fileName%>">Delete</a></td>
+											<td><a class="link_item delete_btn" href="../action/deleteAction.jsp?filename=<%=fileName%>&datasetExists=True">Delete</a></td>
 											<%
 										}
 										if(data.getDataset().contentEquals("M"))

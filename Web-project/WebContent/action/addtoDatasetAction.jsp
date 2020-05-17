@@ -9,25 +9,17 @@
 </head>
 <body>
 	<%
-		String filename=request.getParameter("filename");
+		String fileName=request.getParameter("filename");
 		String datasetType=request.getParameter("datasetType");
 		boolean datasetExists=Boolean.parseBoolean(request.getParameter("datasetExists"));
 		
 		String directory=application.getRealPath("/DataFiles/");
-		String filePath=directory+filename;
-		String datasetName=filename.replaceAll("(\\.\\w+)", "");
+		String filePath=directory+fileName;
+		String datasetName=fileName.replaceAll("(\\.\\w+)", "");
 		DatasetDAO datasetDAO=new DatasetDAO();
-		boolean status1=datasetDAO.addtoDataset(filename, datasetName,datasetType,datasetExists);	
+		boolean status1=datasetDAO.addtoDataset(fileName, datasetName,datasetType,datasetExists);	
 		
 		boolean status2=JenaAPI.addData(filePath,datasetName);
-		
-		out.write("<script>");
-		out.println("alert('status1: " + status1 + "')");
-		out.write("</script>");
-		
-		out.write("<script>");
-		out.println("alert('status2: " + status2 + "')");
-		out.write("</script>");
 		
 		if(status1 && status2){
 			out.write("<script>");

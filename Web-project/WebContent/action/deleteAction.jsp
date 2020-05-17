@@ -13,12 +13,16 @@
 	<%
 		String directory=application.getRealPath("/DataFiles/");
 		String fileName=request.getParameter("filename");
+		boolean datasetExists=Boolean.parseBoolean(request.getParameter("datasetExists"));
+		
 		String filePath=directory+fileName;
+		String datasetName=fileName.replaceAll("(\\.\\w+)", "");
+		
 		boolean status=FileManage.deleteFile(filePath);
 		
 		if(status){
 			DatasetDAO dataDAO = new DatasetDAO();
-			dataDAO.delete(fileName);
+			dataDAO.delete(fileName,datasetName,datasetExists);
 			out.write("<script>");
 			out.println("alert('"+fileName+" 파일이 제거되었습니다.')");
 			out.write("</script>");

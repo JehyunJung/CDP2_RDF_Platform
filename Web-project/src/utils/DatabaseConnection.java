@@ -12,7 +12,7 @@ public class DatabaseConnection {
 	static String userPW="";
 	static String dbName="";
 
-	public static Connection get_DatabaseConnection() {
+	public static Connection getDatabaseConnection() {
 		Connection conn = null;
 		// Driver Loading
 		try {
