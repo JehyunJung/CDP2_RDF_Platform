@@ -28,7 +28,6 @@
 			padding-bottom:10px
 		}
 		.link_item{
-
 			padding:2px 10px;
 			border-radius:3px;
 		}
@@ -104,19 +103,17 @@
 										else{
 											if(data.getDataset().contentEquals("M")){
 												%>
-												<td colspan=2 style="padding-left:30px;"><a class="link_item add_btn" href="../action/addtoDatasetAction.jsp?filename=<%=fileName%>&datasetType=tdb&datasetExists=True">Add to Disk</a></td>
+												<td colspan=2 style="padding-left:30px;padding-right:5px;"><a class="link_item add_btn" href="../action/addtoDatasetAction.jsp?filename=<%=fileName%>&datasetType=tdb&datasetExists=True">Add to Disk</a></td>
 												<td><a class="link_item delete_btn" href="../action/deleteAction.jsp?filename=<%=fileName%>&datasetExists=True">Delete</a></td>
+												<td><strong>In-Memory</strong></td>
 												<%
 											}
 											else{
 												%>
-												<td colspan=2 style="padding-left:30px;"><a class="link_item add_btn" href="../action/addtoDatasetAction.jsp?filename=<%=fileName%>&datasetType=mem&datasetExists=True">Add to Memory</a></td>
+												<td colspan=2 style="padding-left:30px;padding-right:5px;"><a class="link_item add_btn" href="../action/addtoDatasetAction.jsp?filename=<%=fileName%>&datasetType=mem&datasetExists=True">Add to Memory</a></td>
 												<td><a class="link_item delete_btn" href="../action/deleteAction.jsp?filename=<%=fileName%>&datasetExists=True">Delete</a></td>
+												<td><strong>Disk</strong></td>
 												<%
-												if(data.getDataset().contentEquals("M"))
-													out.write("<td><strong>In-Memory</strong></td>");
-												else
-													out.write("<td><strong>Disk</strong></td>");
 											}
 										}
 										
