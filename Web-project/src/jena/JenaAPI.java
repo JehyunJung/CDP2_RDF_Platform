@@ -26,14 +26,13 @@ public class JenaAPI {
 		return model;
 	}
 	
-	public static boolean addtoDataset(String inputFileName,String datasetName) {
+	public static boolean addData(String inputFilePath,String datasetName) {
 		String data_location;
 		String ip=DatabaseConnection.getIP();
 		String port=DatabaseConnection.getPort();
-
 		try (RDFConnection conn=RDFConnectionFactory.connect("http://"+ip+":3030/"+datasetName)){
 			Model model=ModelFactory.createDefaultModel();
-			RDFDataMgr.read(model, inputFileName);
+			RDFDataMgr.read(model, inputFilePath);
 			conn.load(model);
 			return true;
 		}

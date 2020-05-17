@@ -6,11 +6,11 @@ import java.sql.DriverManager;
 
 public class DatabaseConnection {
 	static String url = "jdbc:mysql://";
-	static String ip="localhost";
-	static String port="";
-	static String userID="";
-	static String userPW="";
-	static String dbName="";
+	static String ip="49.50.166.240";
+	static String port="5050";
+	static String userID="root";
+	static String userPW="qaz123wsx456!@#";
+	static String dbName="CDP2";
 
 	public static Connection get_DatabaseConnection() {
 		Connection conn = null;

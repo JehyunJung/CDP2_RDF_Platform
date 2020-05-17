@@ -86,7 +86,6 @@
 					   				}
 					   				for(DatasetDTO data: datas){
 					   					String fileName=data.getTitle();
-					   					String datasetName=fileName.replaceAll("(\\.\\w+)", "");
 					   			%>
 								<tr>
 									<td><%=data.getTitle()%></td>
@@ -96,8 +95,8 @@
 										if(data.getDataset()==null){
 											%>
 											<td style="padding-left:30px;"><a class="link_item delete_btn" href="../action/deleteAction.jsp?filename=<%=fileName%>">Delete</a></td>
-											<td><a class="link_item add_btn" href="../action/addtoDatasetAction.jsp?filename=<%=fileName%>&datasetType=mem" datasetExists="False" datasetName=<%=datasetName%> datasetType=mem>Add to Memory</a></td>
-											<td><a class="link_item add_btn" href="../action/addtoDatasetAction.jsp?filename=<%=fileName%>&datasetType=tdb" datasetExists="False" datasetName=<%=datasetName%> datasetType=mem>Add to Disk</a></td>
+											<td><a class="link_item add_btn" href="../action/addtoDatasetAction.jsp?filename=<%=fileName%>&datasetType=mem&datasetExists=False">Add to Memory</a></td>
+											<td><a class="link_item add_btn" href="../action/addtoDatasetAction.jsp?filename=<%=fileName%>&datasetType=tdb&datasetExists=False">Add to Disk</a></td>
 											<td>Not Added Yet</td>
 									<%
 										}
@@ -120,6 +119,7 @@
 				</div>
 			</div>
 		</section>
+		
 	</div>
 	<footer>
 		<jsp:include page="footer.jsp" flush="false"/>
