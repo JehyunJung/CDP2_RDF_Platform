@@ -6,6 +6,12 @@ import java.sql.SQLException;
 import java.sql.Types;
 import java.util.ArrayList;
 import utils.DatabaseConnection;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 public class DatasetDAO {
 	private Connection conn;
@@ -83,23 +89,73 @@ public class DatasetDAO {
 		}
 		return false;
 	}
-	
-	
-	public boolean addToDataset(String Title,String dataset) {
+	public boolean createDataset(String datasetName,String datasetType) {
 		String ip=DatabaseConnection.getIP();
-	      String port=DatabaseConnection.getPort();
-	      String SQL="UPDATE DATA SET URL= ?, DATASET=? WHERE Title = ?";
-	      
-	      //URL에 파일이름에서 확장자 제외하고 저장
-	      int idx = Title.indexOf("."); 
-	       String url_name = Title.substring(0, idx);
-	       
-	      try {
+		String request ="http://"+ip+":3030/$/datasets";
+		URL url;
+		HttpURLConnection connection;
+		try {
+			url = new URL(request);
+			connection = (HttpURLConnection) url.openConnection(); 
+			connection.setDoInput(true);
+			connection.setInstanceFollowRedirects(false); 
+			connection.setRequestMethod("POST"); 
+			connection.setUseCaches (false);
+			connection.setDoOutput(true);
+			connection.setRequestProperty("content-type", "application/x-www-form-urlencoded");
+			String body = "dbName="+datasetName+"&dbType="+datasetType;
+			OutputStream os = connection.getOutputStream();
+		    os.write(body.getBytes());
+		    int responseStatus=connection.getResponseCode();
+			connection.disconnect();
+			if(responseStatus==200) 
+				return true;
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		return false;
+	}
+	public boolean deleteDataset(String datasetName) {
+		String ip=DatabaseConnection.getIP();
+		String request ="http://"+ip+"/$/datasets/"+datasetName;
+		URL url;
+		HttpURLConnection connection;
+		try {
+			url = new URL(request);
+			connection= (HttpURLConnection) url.openConnection(); 
+			connection.setRequestMethod("DELETE"); 
+			int responseStatus=connection.getResponseCode();
+			connection.disconnect();
+			if(responseStatus==200) 
+				return true;
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		return false;
+
+	}
+	public boolean addtoDataset(String Title,String datasetName,String datasetType,boolean datasetExists) {
+		String ip=DatabaseConnection.getIP();
+		String port=DatabaseConnection.getPort();
+		String SQL="UPDATE DATA SET URL= ?, DATASET=? WHERE Title = ?";
+		boolean status;
+		if(datasetExists) {
+			status=deleteDataset(datasetName);
+			System.out.println("Performed delete: "+status);
+		}
+		status=createDataset(datasetName,datasetType);
+		System.out.println("Performed Create: "+status);
+		if(!status)
+			return status;
+		  try {
 	         pstmt=conn.prepareStatement(SQL);
 	         if(dataset.contentEquals("M"))
-	            pstmt.setString(1,"http://"+ip+":3030/"+url_name+"/sparql");
+	            pstmt.setString(1,"http://"+ip+":3030/"+datasetName+"/sparql");
 	         else
-	            pstmt.setString(1,"http://"+ip+":3030/"+url_name+"/sparql");         
+	            pstmt.setString(1,"http://"+ip+":3030/"+datasetName+"/sparql");         
 	         pstmt.setString(2, dataset);
 	         pstmt.setString(3, Title);
 	         pstmt.executeUpdate();
