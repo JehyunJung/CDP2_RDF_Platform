@@ -84,24 +84,30 @@ public class DatasetDAO {
 		return false;
 	}
 	
+	
 	public boolean addToDataset(String Title,String dataset) {
 		String ip=DatabaseConnection.getIP();
-		String port=DatabaseConnection.getPort();
-		String SQL="UPDATE DATA SET URL= ?, DATASET=? WHERE Title = ?";
-		try {
-			pstmt=conn.prepareStatement(SQL);
-			if(dataset.contentEquals("M"))
-				pstmt.setString(1,"http://"+ip+port+"/Hot-Data/");
-			else
-				pstmt.setString(1,"http://"+ip+port+"/Cold-Data/");			
-			pstmt.setString(2, dataset);
-			pstmt.setString(3, Title);
-			pstmt.executeUpdate();
-			return true;
-		}catch(Exception e) {
-			e.printStackTrace();
-		}
-		return false;
+	      String port=DatabaseConnection.getPort();
+	      String SQL="UPDATE DATA SET URL= ?, DATASET=? WHERE Title = ?";
+	      
+	      //URL에 파일이름에서 확장자 제외하고 저장
+	      int idx = Title.indexOf("."); 
+	       String url_name = Title.substring(0, idx);
+	       
+	      try {
+	         pstmt=conn.prepareStatement(SQL);
+	         if(dataset.contentEquals("M"))
+	            pstmt.setString(1,"http://"+ip+":3030/"+url_name+"/sparql");
+	         else
+	            pstmt.setString(1,"http://"+ip+":3030/"+url_name+"/sparql");         
+	         pstmt.setString(2, dataset);
+	         pstmt.setString(3, Title);
+	         pstmt.executeUpdate();
+	         return true;
+	      }catch(Exception e) {
+	         e.printStackTrace();
+	      }
+	      return false;
 	}
 		
 	public int delete (String Title) {
