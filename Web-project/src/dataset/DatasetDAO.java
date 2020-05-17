@@ -89,7 +89,6 @@ public class DatasetDAO {
 		}
 		return false;
 	}
-	
 	public boolean createDataset(String datasetName,String datasetType) {
 		String ip=DatabaseConnection.getIP();
 		String request ="http://"+ip+":3030/$/datasets";
@@ -151,20 +150,20 @@ public class DatasetDAO {
 		System.out.println("Performed Create: "+status);
 		if(!status)
 			return status;
-		try {
-			pstmt=conn.prepareStatement(SQL);
-			if(datasetName.contentEquals("M"))
-				pstmt.setString(1,"http://"+ip+port+"/Hot-Data/");
-			else
-				pstmt.setString(1,"http://"+ip+port+"/Cold-Data/");			
-			pstmt.setString(2, datasetName);
-			pstmt.setString(3, Title);
-			pstmt.executeUpdate();
-			return true;
-		}catch(Exception e) {
-			e.printStackTrace();
-		}
-		return false;
+		  try {
+	         pstmt=conn.prepareStatement(SQL);
+	         if(dataset.contentEquals("M"))
+	            pstmt.setString(1,"http://"+ip+":3030/"+datasetName+"/sparql");
+	         else
+	            pstmt.setString(1,"http://"+ip+":3030/"+datasetName+"/sparql");         
+	         pstmt.setString(2, dataset);
+	         pstmt.setString(3, Title);
+	         pstmt.executeUpdate();
+	         return true;
+	      }catch(Exception e) {
+	         e.printStackTrace();
+	      }
+	      return false;
 	}
 		
 	public int delete (String Title) {
