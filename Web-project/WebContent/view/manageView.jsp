@@ -69,6 +69,7 @@
 							style="text-align: center; border: 1px solid #dddddd">
 							<thead>
 								<tr>
+									<th style="background-color: #eeeeee; text-align: center;">Index</th>
 									<th style="background-color: #eeeeee; text-align: center;">File Name</th>
 									<th style="background-color: #eeeeee; text-align: center;"></th>
 									<th style="background-color: #eeeeee; text-align: center;"></th>
@@ -83,11 +84,14 @@
 					   				if(datas.isEmpty()){
 					   					out.write("<td colspan=7>No Files Currently</td>");
 					   				}
+									int count=0;
 					   				for(DatasetDTO data: datas){
+										count+=1;
 					   					String fileName=data.getTitle();
 					   					System.out.println(data.getDataset());
 					   			%>
 								<tr>
+									<td><%=count%></td>
 									<td><%=data.getTitle()%></td>
 									<td></td>
 									<td></td>

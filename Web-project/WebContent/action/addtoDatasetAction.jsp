@@ -21,6 +21,7 @@
 		
 		boolean status2=JenaAPI.addData(filePath,datasetName);
 		
+		System.out.println("status1: " +status1+" status2: "+status2);
 		if(status1 && status2){
 			out.write("<script>");
 			if(datasetType.contentEquals("mem"))
