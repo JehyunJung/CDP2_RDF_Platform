@@ -1,24 +1,39 @@
-import java.sql.*;
+import java.sql.SQLException;
+import java.sql.Connection;
+import java.sql.DriverManager;
 
 public class DatabaseConnection {
-	/*
-	static String serverIp= "155.230.36.61";
-	static String strSID="orcl";
-	static String portNum="1521";
-	static String user="s2017110115";
-	static String pass="qaz123wsx456";
-	*/
-	
-	public static Connection getConnection(String serverIp, String strSID, String portNum, String user, String pass) {
-		String url="jdbc:oracle:thin:@" + serverIp + ":" + portNum + ":" + strSID;
+	static String url = "jdbc:mysql://";
+	static String ip="";
+	static String DBport="";
+	static String userID="";
+	static String userPW="";
+	static String dbName="";
+	static String fusekiPort="";
+
+	public static Connection get_DatabaseConnection() {
+		Connection conn = null;
+		// Driver Loading
 		try {
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-			return DriverManager.getConnection(url, user, pass);
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}catch(SQLException e) {
-			e.printStackTrace();
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			String db = url + ip + ":" + DBport + "/" + dbName+ "?serverTimezone=UTC";
+			conn = DriverManager.getConnection(db, userID, userPW);
+			return conn;
 		}
-		return null;
+		
+		catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+			return null;
+		} 
 	}
+	public static String getIP() {
+		return ip;
+	}
+	public static String getPort() {
+		return DBport;
+	}
+	public static String getfusekiPort() {
+		return fusekiPort;
+	}
+
 }

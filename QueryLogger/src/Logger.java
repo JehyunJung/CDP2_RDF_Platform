@@ -1,27 +1,76 @@
-
-import java.sql.Date;
-import java.sql.Connection;
-
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class Logger {
-	public static String log(Connection conn, Statement st, String dataset, long estimatedTime) {
-		long time = System.currentTimeMillis();
-		Date date = new Date(time);
-		String loggedLine = null;
+
+	public static void main(String[] args) {
+		// queryFilePath/queryFileName.csv ÆÄÀÏ¿¡¼­ Äõ¸®¸¦ ÀĞ¾î fuseki¿¡ Äõ¸® ÈÄ logFilePath/logFileName.csv¿¡ ·Î±× ÀúÀåÇÔ
+		// Äõ¸® ¹× ·Î±× º¯¼ö
+		BufferedReader br = null;
+		BufferedWriter bufWriter = null;
+		String queryFilePath = "";
+		String queryFileName = "queryset";
+		String logFilePath = "";
+		String logFileName = "log";
+		List<List<String>> allQuery = new ArrayList<List<String>>();
+		
+		
 		try {
-			// ë°ì´í„°ì…‹ ì´ë¦„ìœ¼ë¡œ managerId ì°¾ê¸°
-			String sql = "SELECT REGISTRANT FROM DATASET WHERE DATASET = " + dataset;
-			ResultSet resultset = st.executeQuery(sql);
-			String managerId = resultset.getString(1);
-			// DBì— ë¡œê·¸ ê¸°ë¡
-			loggedLine = dataset + "," + date + "," + estimatedTime + "," + managerId;
-		} catch (SQLException e) {
-			System.out.println("Failed to log");
+			// query ÆÄÀÏ¿¡¼­ query ÀüÃ¼ ÀĞ¾î allQuery ¸®½ºÆ®¿¡ ÀúÀå
+			br = new BufferedReader(new InputStreamReader(new FileInputStream(queryFilePath+"\\"+queryFileName+".csv")));
+			
+			String line = "";
+			while((line = br.readLine()) != null){
+                //CSV 1ÇàÀ» ÀúÀåÇÏ´Â ¸®½ºÆ®
+                List<String> tmpList = new ArrayList<String>();
+                String array[] = line.split(",");
+                //¹è¿­¿¡¼­ ¸®½ºÆ® ¹İÈ¯
+                tmpList = Arrays.asList(array);
+                allQuery.add(tmpList);
+            }
+		} catch(FileNotFoundException e) {
+			e.printStackTrace();
+		} catch(IOException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (br != null) {
+					br.close();
+				}
+			} catch(IOException e) {
+				e.printStackTrace();
+			}
 		}
-		return loggedLine;
+		
+		try {
+			bufWriter = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(logFilePath+"\\"+logFileName+".csv")));
+			for (List<String> newLine : allQuery) {
+				List<String> list = newLine;	// csv¿¡¼­ dataset, query¹® ¼øÀ¸·Î ¾²¿©ÀÖ´Ù°í °¡Á¤
+				// Äõ¸® ÈÄ ·Î±× ÀúÀå
+				bufWriter.write(Query.fuseki_query(list.get(0), list.get(1))+","+ManagerIdExtract.log(list.get(0)));
+				bufWriter.newLine();
+			}
+		} catch (FileNotFoundException e){
+            e.printStackTrace();
+        } catch (IOException e){
+            e.printStackTrace();
+        } finally {
+            try{
+                if(bufWriter != null){
+                    bufWriter.close();
+                }
+            }catch(IOException e){
+                e.printStackTrace();
+            }
+        }
 	}
 }

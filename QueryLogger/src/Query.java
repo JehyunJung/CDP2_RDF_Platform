@@ -1,23 +1,25 @@
 import java.sql.Connection;
 import java.sql.Statement;
+import java.util.Date;
 
 import org.apache.jena.query.*;
 import org.apache.jena.rdfconnection.*;
 
 
 public class Query {
+	private static String addr="http://"+DatabaseConnection.getIP()+":"+DatabaseConnection.getfusekiPort()+"/";
 	
-	private static long startTime = 0, estimatedTime = 0;
-	
-	public static String fuseki_query(Connection conn, Statement st, String addr, String dataset, String query) {
+	public static String fuseki_query(String dataset, String query) {
+		long estimatedTime=0;
+		Date date=new Date(System.currentTimeMillis());
         try (RDFConnection connRDF = RDFConnectionFactory.connect(addr + dataset)) {
-        	startTime = System.nanoTime();
+        	long startTime = System.nanoTime();
             QueryExecution qe=connRDF.query(query);
             ResultSet results=qe.execSelect();
-            qe.close();
             estimatedTime = System.nanoTime() - startTime;
-            ResultSetFormatter.out(System.out,results);
-            return Logger.log(conn, st, dataset, estimatedTime);
+            //ResultSetFormatter.out(System.out,results);
+            qe.close();
+            return dataset + "," + date + "," + Long.toString(estimatedTime);
         }
     }
 }
