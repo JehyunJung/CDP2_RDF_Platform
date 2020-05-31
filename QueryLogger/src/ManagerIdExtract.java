@@ -13,10 +13,13 @@ public class ManagerIdExtract {
 		String managerId=null;
 		try {
 			// 데이터셋 이름으로 managerId 찾기
-			String sql = "SELECT manager FROM DATA WHERE Title = ?";
+			String sql = "SELECT manager FROM DATA WHERE Title in (?,?,?) ";
 			PreparedStatement psmt=conn.prepareStatement(sql);
 
-			psmt.setString(1, dataset);
+			psmt.setString(1, dataset+".rdf");
+			psmt.setString(2, dataset+".ttl");
+			psmt.setString(3, dataset+".nt");
+			
 			ResultSet resultset = psmt.executeQuery();
 			if(resultset.next())
 				managerId = resultset.getString(1);

@@ -13,20 +13,19 @@ import java.util.List;
 public class Logger {
 
 	public static void main(String[] args) {
-		// queryFilePath/queryFileName.csv 파일에서 쿼리를 읽어 fuseki에 쿼리 후 logFilePath/logFileName.csv에 로그 저장함
+		// FilePath/queryFileName.csv 파일에서 쿼리를 읽어 fuseki에 쿼리 후 FilePath/logFileName.csv에 로그 저장함
 		// 쿼리 및 로그 변수
 		BufferedReader br = null;
 		BufferedWriter bufWriter = null;
-		String queryFilePath = "";
+		String FilePath = "";
 		String queryFileName = "queryset";
-		String logFilePath = "";
 		String logFileName = "log";
 		List<List<String>> allQuery = new ArrayList<List<String>>();
 		
 		
 		try {
 			// query 파일에서 query 전체 읽어 allQuery 리스트에 저장
-			br = new BufferedReader(new InputStreamReader(new FileInputStream(queryFilePath+"\\"+queryFileName+".csv")));
+			br = new BufferedReader(new InputStreamReader(new FileInputStream(FilePath+"\\"+queryFileName+".csv")));
 			
 			String line = "";
 			while((line = br.readLine()) != null){
@@ -52,7 +51,7 @@ public class Logger {
 		}
 		
 		try {
-			bufWriter = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(logFilePath+"\\"+logFileName+".csv")));
+			bufWriter = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(FilePath+"\\"+logFileName+".csv")));
 			for (List<String> newLine : allQuery) {
 				List<String> list = newLine;	// csv에서 dataset, query문 순으로 쓰여있다고 가정
 				// 쿼리 후 로그 저장
