@@ -21,5 +21,9 @@ public class Query {
             qe.close();
             return dataset + "," + date + "," + Long.toString(estimatedTime);
         }
+        catch(Exception e) {
+        	e.printStackTrace();
+        	return null;
+        }
     }
 }

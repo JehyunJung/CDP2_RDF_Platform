@@ -9,7 +9,6 @@ import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
 public class Logger {
 
 	public static void main(String[] args) {
@@ -31,7 +30,16 @@ public class Logger {
 			while((line = br.readLine()) != null){
                 //CSV 1행을 저장하는 리스트
                 List<String> tmpList = new ArrayList<String>();
-                String array[] = line.split(",");
+                String temp[] = line.split(",");
+                String query=temp[1];
+                //query에 comma가 있는 경우 처리
+                for(int i=2;i<temp.length;i++) 
+                	query+=","+temp[i];
+                
+                //double quote 처리
+                if(query.charAt(0)=='"')
+                	query=query.substring(1, query.length()-1);   
+                String array[]= {temp[0],query};
                 //배열에서 리스트 반환
                 tmpList = Arrays.asList(array);
                 allQuery.add(tmpList);
