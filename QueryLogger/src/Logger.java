@@ -8,7 +8,9 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 public class Logger {
 
 	public static void main(String[] args) {
@@ -16,16 +18,17 @@ public class Logger {
 		// 쿼리 및 로그 변수
 		BufferedReader br = null;
 		BufferedWriter bufWriter = null;
-		String FilePath = "";
-		String queryFileName = "queryset";
-		String logFileName = "log";
+		String FilePath = "C:\\Users\\jhyun\\Desktop";
+		String queryFileName = "queryset1";
+		String logFileName = "log1";
 		List<List<String>> allQuery = new ArrayList<List<String>>();
-		
+		Random random=new Random();
 		
 		try {
 			// query 파일에서 query 전체 읽어 allQuery 리스트에 저장
 			br = new BufferedReader(new InputStreamReader(new FileInputStream(FilePath+"\\"+queryFileName+".csv")));
-			
+			int count=0;
+			int iterator=1;
 			String line = "";
 			while((line = br.readLine()) != null){
                 //CSV 1행을 저장하는 리스트
@@ -42,7 +45,10 @@ public class Logger {
                 String array[]= {temp[0],query};
                 //배열에서 리스트 반환
                 tmpList = Arrays.asList(array);
-                allQuery.add(tmpList);
+                for(int j=0;j<random.nextInt(100);j++)
+                	allQuery.add(tmpList);
+                
+               
             }
 		} catch(FileNotFoundException e) {
 			e.printStackTrace();
@@ -57,7 +63,7 @@ public class Logger {
 				e.printStackTrace();
 			}
 		}
-		
+		Collections.shuffle(allQuery);
 		try {
 			bufWriter = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(FilePath+"\\"+logFileName+".csv")));
 			for (List<String> newLine : allQuery) {
@@ -80,4 +86,5 @@ public class Logger {
             }
         }
 	}
+
 }
