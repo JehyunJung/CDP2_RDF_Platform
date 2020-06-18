@@ -19,16 +19,14 @@ public class Logger {
 		BufferedReader br = null;
 		BufferedWriter bufWriter = null;
 		String FilePath = "C:\\Users\\jhyun\\Desktop";
-		String queryFileName = "queryset1";
-		String logFileName = "log1";
+		String queryFileName = "queryset_final";
+		String logFileName = "log2";
 		List<List<String>> allQuery = new ArrayList<List<String>>();
-		Random random=new Random();
-		
+		int count=0;
 		try {
 			// query 파일에서 query 전체 읽어 allQuery 리스트에 저장
 			br = new BufferedReader(new InputStreamReader(new FileInputStream(FilePath+"\\"+queryFileName+".csv")));
-			int count=0;
-			int iterator=1;
+			
 			String line = "";
 			while((line = br.readLine()) != null){
                 //CSV 1행을 저장하는 리스트
@@ -45,10 +43,8 @@ public class Logger {
                 String array[]= {temp[0],query};
                 //배열에서 리스트 반환
                 tmpList = Arrays.asList(array);
-                for(int j=0;j<random.nextInt(100);j++)
-                	allQuery.add(tmpList);
-                
-               
+                allQuery.add(tmpList);
+                count+=1;
             }
 		} catch(FileNotFoundException e) {
 			e.printStackTrace();
@@ -63,14 +59,17 @@ public class Logger {
 				e.printStackTrace();
 			}
 		}
-		Collections.shuffle(allQuery);
+		System.out.println("Num Queries: " + count);
 		try {
+			count=1;
 			bufWriter = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(FilePath+"\\"+logFileName+".csv")));
 			for (List<String> newLine : allQuery) {
 				List<String> list = newLine;	// csv에서 dataset, query문 순으로 쓰여있다고 가정
 				// 쿼리 후 로그 저장
 				bufWriter.write(Query.fuseki_query(list.get(0), list.get(1))+","+ManagerIdExtract.log(list.get(0)));
 				bufWriter.newLine();
+				System.out.println(count);
+				count+=1;
 			}
 		} catch (FileNotFoundException e){
             e.printStackTrace();
