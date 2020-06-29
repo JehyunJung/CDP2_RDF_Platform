@@ -17,7 +17,9 @@ public class Logger {
 		//randomQueryGenerator();
 		//duplicateCsvs();
 		//mergeCsvs();
+		long startTime=System.nanoTime();
 		generateLog();
+		System.out.println(Long.toString(System.nanoTime()-startTime) + " passed");
 
 	}
 	public static void randomQueryGenerator() {
@@ -38,7 +40,7 @@ public class Logger {
 	                String temp[] = line.split(",");
 	                String query=temp[1];
 	                //query俊 comma啊 乐绰 版快 贸府
-	                for(int i=2;i<temp.length;i++) 
+	                for(int i=2;i<temp.length;i++)
 	                	query+=","+temp[i];
 	                
 	                //double quote 贸府

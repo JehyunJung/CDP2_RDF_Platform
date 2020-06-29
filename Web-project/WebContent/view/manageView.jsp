@@ -79,8 +79,11 @@
 							</thead>
 							<tbody>
 								<%
+									
 									DatasetDAO datasetDAO=new DatasetDAO();
 									ArrayList<DatasetDTO> datas=datasetDAO.getDataList();
+									long memorySize=0;
+									long diskSize=0;
 					   				if(datas.isEmpty()){
 					   					out.write("<td colspan=7>No Files Currently</td>");
 					   				}
@@ -89,6 +92,7 @@
 										count+=1;
 					   					String fileName=data.getTitle();
 					   					System.out.println(data.getDataset());
+					   					
 					   			%>
 								<tr>
 									<td><%=count%></td>
@@ -111,6 +115,8 @@
 												<td><a class="link_item delete_btn" href="../action/deleteAction.jsp?filename=<%=fileName%>&datasetExists=True">Delete</a></td>
 												<td><strong>In-Memory</strong></td>
 												<%
+												File file=new File(data.getStorage_path());
+												memorySize+=file.length();
 											}
 											else{
 												%>
@@ -118,6 +124,8 @@
 												<td><a class="link_item delete_btn" href="../action/deleteAction.jsp?filename=<%=fileName%>&datasetExists=True">Delete</a></td>
 												<td><strong>Disk</strong></td>
 												<%
+												File file=new File(data.getStorage_path());
+												diskSize+=file.length();
 											}
 										}
 										
@@ -128,6 +136,10 @@
 								} %>
 							</tbody>
 						</table>
+						<p>
+							Memory Size: <%=memorySize %>
+							Disk Size: <%=diskSize %>
+						</p>
 					</div>
 				</div>
 			</div>
