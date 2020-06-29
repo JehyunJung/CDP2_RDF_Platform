@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="f4928a51-41c8-4789-96f9-2a0f2fa725e8" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/QueryLogger/bin/DatabaseConnection.class" beforeDir="false" afterPath="$PROJECT_DIR$/QueryLogger/bin/DatabaseConnection.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QueryLogger/bin/Logger.class" beforeDir="false" afterPath="$PROJECT_DIR$/QueryLogger/bin/Logger.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QueryLogger/bin/Query.class" beforeDir="false" afterPath="$PROJECT_DIR$/QueryLogger/bin/Query.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QueryLogger/log.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/QueryLogger/queryset.CSV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/QueryLogger/src/DatabaseConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/QueryLogger/src/DatabaseConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QueryLogger/src/Logger.java" beforeDir="false" afterPath="$PROJECT_DIR$/QueryLogger/src/Logger.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QueryLogger/src/Query.java" beforeDir="false" afterPath="$PROJECT_DIR$/QueryLogger/src/Query.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="JupyterTrust" id="10933da5-9ccd-4179-a859-16fb6bb3e89e" />
+  <component name="ProjectId" id="1clA8eDOJej8IVwhU12KE7EvjV0" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../MLDL" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f4928a51-41c8-4789-96f9-2a0f2fa725e8" name="Default Changelist" comment="" />
+      <created>1591092647836</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1591092647836</updated>
+      <workItem from="1591092649400" duration="12000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1591092660328">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1591092660328" />
+  </component>
+</project>

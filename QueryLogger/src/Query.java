@@ -11,7 +11,7 @@ public class Query {
 	
 	public static String fuseki_query(String dataset, String query) {
 		long estimatedTime=0;
-		Date date=new Date(System.currentTimeMillis());
+		Date date=new Date();
         try (RDFConnection connRDF = RDFConnectionFactory.connect(addr + dataset)) {
         	long startTime = System.nanoTime();
             QueryExecution qe=connRDF.query(query);
@@ -19,7 +19,7 @@ public class Query {
             estimatedTime = System.nanoTime() - startTime;
             //ResultSetFormatter.out(System.out,results);
             qe.close();
-            return dataset + "," + date + "," + Long.toString(estimatedTime);
+            return dataset + "," + date.getTime() + "," + Long.toString(estimatedTime);
         }
         catch(Exception e) {
         	e.printStackTrace();

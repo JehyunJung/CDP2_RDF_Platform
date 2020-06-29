@@ -25,11 +25,22 @@ public class ManagerIdExtract {
 				managerId = resultset.getString(1);
 			// DB에 로그 기록
 //			loggedLine = dataset + "," + date + "," + estimatedTime + "," + 
+			resultset.close();
+			psmt.close();
 			return managerId;
 		} catch (SQLException e) {
 			e.printStackTrace();
 			System.out.println("Failed to log");
 			return null;
+		}
+		finally {
+				try {
+					if(conn!=null)
+						conn.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 		}
 		
 	}
