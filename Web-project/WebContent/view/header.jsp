@@ -25,16 +25,8 @@
 	        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 	          <a class="dropdown-item" href="manageView.jsp">upload/delete</a>
 	          <div class="dropdown-divider"></div>
-	          <a class="dropdown-item" href="replaceView.jsp">replace</a>
 	        </div>
-	      
-	      <li class="nav-item">
-	        <a class="nav-link" href="#">Query</a>
-	      </li>
-	    </ul>
-	    <button class="btn login_button" type="button" onclick="location.href='signInView.jsp'">Sign In</button>
-	    
-	<%-- 로그아웃  
+	    </ul>	  
 		<%
 			String userID = null;
 			if(session.getAttribute("ID")!=null){
@@ -52,7 +44,7 @@
 	  		<button class="btn login_button" type="button" onclick="location.href='../action/logoutAction.jsp'">Sign Out</button>
   		<%
 			}
-		%> --%>
+		%>
 	    
 	  </div>
 	</nav>
