@@ -5,9 +5,9 @@
 
 ## Collaborators
 - 정제현 [JehyunJung](https://github.com/JehyunJung/) jhyun9152@naver.com
-- 우정민 [Jeongmin Woo](https://github.com/greenblues1190) - jeongmoon94@gmail.com
-- 이인섭 [dldlstjq](dldlstjq) - inseob111@naver.com
-- 이승진 [Leeseungjin](https://github.com/Leeseungjin1) - leetmdwls@naver.com
+- 우정민 [Jeongmin Woo](https://github.com/greenblues1190/) - jeongmoon94@gmail.com
+- 이인섭 [dldlstjq](https://github.com/dldlstjq/) - inseob111@naver.com
+- 이승진 [Leeseungjin](https://github.com/Leeseungjin1/) - leetmdwls@naver.com
 
 ## Motivation
 - Hybrid Storage System
