@@ -38,7 +38,7 @@
     - pandas
     - numpy
 
-## Page info
+## Web Page info
 ### Main Page
 
 <img src="Docs/main_page.png" width=500 height=300> 
@@ -67,6 +67,43 @@
 - 파일 업로드
 - 메모리/디스크 추가 
 - 파일 삭제 기능
+
+## Maching Learning
+
+### Models
+
+```python
+Classifiers=[
+    DecisionTreeClassifier(),
+    LinearDiscriminantAnalysis(),
+    QuadraticDiscriminantAnalysis(),
+    GaussianNB(),
+    GaussianProcessClassifier(kernel=1.0*RBF(1.0)),
+    ExtraTreesClassifier(),
+    RidgeClassifier(),
+    KNeighborsClassifier(n_neighbors = 5)
+]
+```
+
+### Results
+
+#### Acccuracy
+
+<img src="Docs/model_accuracy.png" width=500 height=400> 
+
+최대 98%의 정확도로 Hot/Cold Dataset을 분류하는 모델을 이용해서 Classification을 진행한다.
+
+#### Classification Results
+
+<img src="Docs/classification_result.png" width=500 height=400> 
+
+Hot은 빨간색으로, Cold는 파란색으로 표현하도록해서 Classification을 수행한 결과 위와 같이 Hot/Cold가 분류 것을 확인할 수 있다.
+
+#### Query Execution Speed Enhancements
+
+<img src="Docs/query_enhancements.png" width=500 height=400> 
+
+약 30%의 쿼리 수행 속도 증가를 확인할 수 있습니다.
 
 ## Results
 - 논문: [하이브리드 스토리지 구조를 활용한 질의 성능 향상 기법](https://www.eiric.or.kr/literature/ser_view.php?grp_gu=INME&f1=DS&gu=INME020E0&q1_yy=2020&q1_mm=05&rn=10&q1_vol=21&q1_no=01&cmd=qryview&SnxIndxNum=232927&rownum=1&totalCnt=11&pg=1&kci=)
