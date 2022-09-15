@@ -61,6 +61,6 @@
 - 파일 삭제 기능
 
 ## Results
-- Web application URL : http://49.50.166.240:8080/Web-project/
+- 논문: [하이브리드 스토리지 구조를 활용한 질의 성능 향상 기법](https://www.eiric.or.kr/literature/ser_view.php?grp_gu=INME&f1=DS&gu=INME020E0&q1_yy=2020&q1_mm=05&rn=10&q1_vol=21&q1_no=01&cmd=qryview&SnxIndxNum=232927&rownum=1&totalCnt=11&pg=1&kci=)
 
  
