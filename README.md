@@ -40,20 +40,28 @@
 
 ## Page info
 ### Main Page
-![main_page](Docs/main_page.png) 
+
+<img src="Docs/main_page.png" width=500 height=300> 
+
 #### Sign In 버튼을 클릭하게 되면 로그인 창으로 넘어가게 된다.
 
 ### Signin page
-![signin_page](Docs/signin_page.png) 
+
+<img src="Docs/signin_page.png" width=500 height=300> 
+
 #### 아이디와 패스워드 입력을 통해 로그인이 가능하다
 #### Sign Up 버튼을 클릭하게 되면 회원가입 창으로 넘어간다.
 
 ### Signup page
-![signup_page](Docs/signup_page.png) 
+
+<img src="Docs/signup_page.png" width=500 height=300> 
+
 #### 이름, 아이디, 패스워드를 입력하고 Sign Up 버튼 클릭을 통해 회원가입이 가능하다.
 
 ### Data manage page
-![data_manage_page](Docs/data_manage_page.png) 
+
+<img src="Docs/data_manage_page.png" width=500 height=300> 
+
 #### RDF Dataset을 관리하는 화면이다.
 기능
 - 파일 업로드
